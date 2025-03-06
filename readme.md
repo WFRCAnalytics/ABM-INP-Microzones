@@ -1,49 +1,88 @@
-microzones
-
-uses:
--activity based model
--bike model
--remm?
-
-Questions to ask:
-- how will this be used for the ABM
-- how will this be usded for REMM (ask Andy)
-- does the zone make sense for the planning context in which its being used
-- how will the socioeconomic data distribute into the zones
-	- university employment
-- How will the socioeconomic data aggregate into the microzones
-- how will traffic within the zone access the road network
+# Microzone Delineation Workflow  
+[How-to guide](https://docs.google.com/document/d/1gxxo6a0muU6JxEXwSgjpeitC1U00WUzy3vLYgeUYgp0/edit?tab=t.0)
 
 
-Rules of thumb:
-- how many microzones per TAZ?
-	- usually around 3-10 depending on TAZ side, how developed it is, and the land use mix
-- the Outer boundaries of microzones should remain intact; they should not extend pass TAZ boundary where they lie
-- keep the microzone shape simple, no donuts, limit extrusions
+## Requirements  
+- **ArcGIS Pro**  
+- **GitHub**  
 
-Environment:
-- arcgis pro 
-- github
+## What is a Microzone?  
+Microzones, or **Micro Analysis Zones (MAZ)**, are smaller than **Transportation Analysis Zones (TAZ)** and are used for finer-scale analyses.  
 
+### Characteristics:  
+- Typically the size of a **census block**  
+- Comprised of similar **land use characteristics**:  
+  - **Residential**  
+  - **Commercial**  
+  - **Industrial**  
+  - **Education**  
+  - **Parks & Open Space**  
+  - **Greenspace**  
+  - **Developed**  
+- **Wasatch Choice Centers**  
+- All buildings within a microzone may have **similar points of egress**  
 
-What we need:
-- taz are too coarse some applications
-- create and maintain sub taz level geographic units
-- aggregates up and forms taz boundaries
-- other sub taz: census blocks, centers, parcels
-- places to split
-	- current & future land use
-	- environmental constraints
-	- centers types
-	- taz boundaries
-	- census blocks?
-	- greenfield vs developed
-	
-What has been done:
-- interactive activity with analytics group
-- how they are broken depends on use case
--  using all streets network or census block didn't yield useful results land use wise
-- zones based off street network, split by taz
+---
 
-Notes:
-- there is no right or wrong answer at the moment. That fact that some thought is being put into them is enough for now
+## General Steps  
+
+1. **Store all relevant project files** in a GitHub repository.  
+2. **Clone** the repository into the **projects folder** on `ModelQueen`.  
+3. Perform all microzone work within the **ArcGIS Pro project** inside the local repo.  
+4. **Save edits frequently** and periodically **restart ArcGIS Pro** to prevent software issues.  
+5. When finished:  
+   - Save edits  
+   - Save & close the ArcGIS Pro project (so others can open it)  
+6. **Push the local repository** at the end of each workday where changes were made.  
+
+---
+
+## How to Delineate Microzones  
+
+### Supporting Data Layers  
+The project includes several **data layers**:  
+- **Nearmap 2024 Aerial Imagery** – Accessed via ArcGIS Online (flown last summer).  
+- **TAZ Tracker** – Current **TAZ boundary** with tracking fields.  
+- **Microzones Draft** – Pre-delineated zones based on TAZ, Wasatch Choice Centers, and road network.  
+- **Land Use Dissolved** – 2019 REMM input buildings, dissolved by **building type**.  
+- **Wasatch Choice Centers** – Walkable areas with mixed-use destinations, jobs, and housing.  
+- **Road Centerlines** – Maintained by **UGRC**.  
+
+### Editing Guidelines  
+- **Microzones are pre-delineated**, but boundaries need adjustments.  
+- Initial splits were made using:  
+  - **TAZ boundaries**  
+  - **Wasatch Choice Centers**  
+  - **Utah Road Network**  
+- However, **most splits are not meaningful** and require refinement.  
+- Work on **one TAZ at a time**.  
+- The **TAZ Tracker** dataset contains a column named `REVIEW` for tracking progress.  
+
+### Key Questions for Splitting Microzones  
+- **What types of land use** exist in the TAZ?  
+- **How will traffic** within the zone access the **road network**?  
+
+### ArcGIS Pro Editing Tools  
+Use the following tools to adjust zones:  
+- **Split** – Divides an existing zone along a user-drawn line.  
+- **Merge** – Combines two or more zones into a single zone.  
+- **Replace Polygon** – Allows complete redrawing of a polygon while maintaining TAZ outer boundaries.  
+
+---
+
+## Additional Considerations  
+- **Do not alter the outer TAZ boundaries.** Microzones must remain within their TAZ.  
+- **Keep shapes simple** – avoid:  
+  - **Donut holes**  
+  - **Unnecessary extrusions**  
+- **Merging predefined zones** may be an option for creating desired zone shapes.  
+
+---
+
+## Tracking Progress  
+Once a **TAZ has been reviewed**, update the `REVIEW` column with one of the following values:  
+
+| Value | Meaning |  
+|--------|--------------------------------|  
+| **1** | Complete |  
+| **2** | Needs further review |  
