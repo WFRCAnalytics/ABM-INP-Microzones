@@ -80,9 +80,9 @@ Use the following tools to adjust zones:
 ---
 
 ## Tracking Progress  
-Once a **TAZ has been reviewed**, update the `REVIEW` column with one of the following values:  
+Once a **MAZ has been reviewed**, update the `REVIEW` column with one of the following values:  
 
-| Value | Meaning |  
+| Value | Description |  
 |--------|--------------------------------|  
 | **1** | Complete |  
 | **2** | Needs further review |  
