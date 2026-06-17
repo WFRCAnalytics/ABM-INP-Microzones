@@ -34,6 +34,7 @@ Microzones, or **Micro Analysis Zones (MAZ)**, are smaller than **Transportation
    - Save edits  
    - Save & close the ArcGIS Pro project (so others can open it)  
 6. **Push the local repository** at the end of each workday where changes were made.  
+7. Run **Microzones-Progress-Update.py** to get current progress
 
 ---
 
