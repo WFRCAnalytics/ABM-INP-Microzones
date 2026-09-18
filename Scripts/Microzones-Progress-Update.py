@@ -1,4 +1,3 @@
-
 from arcgis import GIS
 from arcgis.features import GeoAccessor
 from arcgis.features import GeoSeriesAccessor
